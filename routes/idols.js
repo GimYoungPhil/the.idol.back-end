@@ -72,7 +72,7 @@ router.post('/idols', function(req, res, next) {
   });
 });
 
-router.delete('/idols', function(req, res, next) {
+router.delete('/idols/:id', function(req, res, next) {
   Idol.findById(req.params.id, function(err, idol) {
 
     idol.remove(function(err) {
