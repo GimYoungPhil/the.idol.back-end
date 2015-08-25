@@ -1,0 +1,1 @@
+exports.Idol  = require('./idol');
