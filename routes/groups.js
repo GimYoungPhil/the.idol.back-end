@@ -42,7 +42,7 @@ router.put('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  var newGroup  = new Idol({
+  var newGroup  = new Group({
     name:      req.body.name,
     company:   req.body.company
   });
