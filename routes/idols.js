@@ -8,7 +8,7 @@ var Idol     = require('../models/idol');
 
 // mongoose.connect(configDB.url);
 
-router.get('/idols', function(req, res, next) {
+router.get('/', function(req, res, next) {
   Idol.find({}, function(err, idols) {
     if (err)
       next();
@@ -17,7 +17,7 @@ router.get('/idols', function(req, res, next) {
   });
 });
 
-router.get('/idols/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   Idol.findById(req.params.id, function(err, idol) {
     if (err)
       next();
@@ -25,7 +25,7 @@ router.get('/idols/:id', function(req, res, next) {
   });
 });
 
-router.put('/idols/:id', function(req, res, next) {
+router.put('/:id', function(req, res, next) {
   Idol.findById(req.params.id, function(err, idol) {
     if (err)
       next();
@@ -45,7 +45,7 @@ router.put('/idols/:id', function(req, res, next) {
   });
 });
 
-router.post('/idols', function(req, res, next) {
+router.post('/', function(req, res, next) {
   var newIdol  = new Idol({
     name:      req.body.name,
     height:    req.body.height,
@@ -61,7 +61,7 @@ router.post('/idols', function(req, res, next) {
   });
 });
 
-router.delete('/idols/:id', function(req, res, next) {
+router.delete('/:id', function(req, res, next) {
   Idol.findById(req.params.id, function(err, idol) {
 
     idol.remove(function(err) {
