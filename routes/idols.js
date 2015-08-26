@@ -1,29 +1,20 @@
 var express = require('express');
-var router = express.Router();
+var router  = express.Router();
 
 // database ===================================================================
-var mongoose = require('mongoose');
-var configDB = require('../config/database.js');
-var Idol   = require('../models/idol');
+// var mongoose = require('mongoose');
+// var configDB = require('../config/database.js');
+var Idol     = require('../models/idol');
 
-mongoose.connect(configDB.url);
+// mongoose.connect(configDB.url);
 
-// function db(req, res, next) {
-//   req.db = {
-//     Idol: models.Idol
-//   };
-//   return next();
-// };
-
-/* GET users listing. */
 router.get('/idols', function(req, res, next) {
   Idol.find({}, function(err, idols) {
     if (err)
       next();
-    idols.sort({'stockDate':1});
+    idols.sort({'stockDate': -1});
     res.status(200).jsonp(idols);
   });
-
 });
 
 router.get('/idols/:id', function(req, res, next) {
@@ -32,7 +23,6 @@ router.get('/idols/:id', function(req, res, next) {
       next();
     res.status(200).jsonp(idol);
   });
-
 });
 
 router.put('/idols/:id', function(req, res, next) {
@@ -53,7 +43,6 @@ router.put('/idols/:id', function(req, res, next) {
       res.status(200).jsonp(idol);
     });
   });
-
 });
 
 router.post('/idols', function(req, res, next) {
@@ -81,6 +70,6 @@ router.delete('/idols/:id', function(req, res, next) {
       res.status(200).jsonp({});
     });
   });
-})
+});
 
 module.exports = router;
