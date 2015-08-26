@@ -8,7 +8,7 @@ var Group    = require('../models/group');
 
 // mongoose.connect(configDB.url);
 
-router.get('/groups', function(req, res, next) {
+router.get('/', function(req, res, next) {
   Group.find({}, function(err, groups) {
     if (err)
       next();
@@ -17,7 +17,7 @@ router.get('/groups', function(req, res, next) {
   });
 });
 
-router.get('/groups/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   Group.findById(req.params.id, function(err, group) {
     if (err)
       next();
@@ -25,7 +25,7 @@ router.get('/groups/:id', function(req, res, next) {
   });
 });
 
-router.put('/groups/:id', function(req, res, next) {
+router.put('/:id', function(req, res, next) {
   Group.findById(req.params.id, function(err, group) {
     if (err)
       next();
@@ -41,7 +41,7 @@ router.put('/groups/:id', function(req, res, next) {
   });
 });
 
-router.post('/groups', function(req, res, next) {
+router.post('/', function(req, res, next) {
   var newGroup  = new Idol({
     name:      req.body.name,
     company:   req.body.company
@@ -53,7 +53,7 @@ router.post('/groups', function(req, res, next) {
   });
 });
 
-router.delete('/groups/:id', function(req, res, next) {
+router.delete('/:id', function(req, res, next) {
   Group.findById(req.params.id, function(err, group) {
 
     group.remove(function(err) {
