@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
     if (err)
       next();
     idols.sort({'stockDate': -1});
-    res.status(200).jsonp(idols);
+    res.status(200).json(idols);
   });
 });
 
@@ -21,7 +21,7 @@ router.get('/:id', function(req, res, next) {
   Idol.findById(req.params.id, function(err, idol) {
     if (err)
       next();
-    res.status(200).jsonp(idol);
+    res.status(200).json(idol);
   });
 });
 
@@ -40,7 +40,7 @@ router.put('/:id', function(req, res, next) {
     idol.save(function(err) {
       if (err)
         next();
-      res.status(200).jsonp(idol);
+      res.status(200).json(idol);
     });
   });
 });
@@ -57,7 +57,7 @@ router.post('/', function(req, res, next) {
   newIdol.save(function(err, idol) {
     if (err)
       return next(err);
-    res.status(200).jsonp(idol);
+    res.status(200).json(idol);
   });
 });
 
@@ -67,7 +67,7 @@ router.delete('/:id', function(req, res, next) {
     idol.remove(function(err) {
       if (err)
         next();
-      res.status(200).jsonp({});
+      res.status(200).json({});
     });
   });
 });

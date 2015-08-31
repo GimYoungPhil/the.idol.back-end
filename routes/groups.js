@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
     if (err)
       next();
     groups.sort({'stockDate': -1});
-    res.status(200).jsonp(groups);
+    res.status(200).json(groups);
   });
 });
 
@@ -21,7 +21,7 @@ router.get('/:id', function(req, res, next) {
   Group.findById(req.params.id, function(err, group) {
     if (err)
       next();
-    res.status(200).jsonp(group);
+    res.status(200).json(group);
   });
 });
 
@@ -36,7 +36,7 @@ router.put('/:id', function(req, res, next) {
     group.save(function(err) {
       if (err)
         next();
-      res.status(200).jsonp(group);
+      res.status(200).json(group);
     });
   });
 });
@@ -49,7 +49,7 @@ router.post('/', function(req, res, next) {
   newGroup.save(function(err, group) {
     if (err)
       return next(err);
-    res.status(200).jsonp(group);
+    res.status(200).json(group);
   });
 });
 
@@ -59,7 +59,7 @@ router.delete('/:id', function(req, res, next) {
     group.remove(function(err) {
       if (err)
         next();
-      res.status(200).jsonp({});
+      res.status(200).json({});
     });
   });
 });
